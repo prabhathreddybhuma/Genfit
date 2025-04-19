@@ -1,0 +1,47 @@
+# Workout CSV Format Guide
+
+## Basic Structure
+goal,level,day,title,exercises,notes
+
+## Field Descriptions
+1. goal: Fitness goal (weight-loss, muscle-gain, full-body, endurance, flexibility)
+2. level: Experience level (beginner, intermediate, advanced)
+3. day: Day of the week (monday, tuesday, etc.)
+4. title: Workout title
+5. exercises: Comma-separated list of exercises
+6. notes: Additional instructions and tips
+
+## Example Workouts
+
+### Weight Loss - Beginner
+weight-loss,beginner,monday,Cardio & Bodyweight Circuit,"5 min warm-up: Light jogging or jumping jacks,Circuit (3 rounds):,- 15 Bodyweight squats (Stand with feet shoulder-width apart, lower down as if sitting in a chair),- 10 Push-ups (knee push-ups if needed) (Keep core tight, lower chest to ground),- 20 Mountain climbers (Alternate bringing knees to chest while in plank position),- 30 sec Plank (Keep body straight, engage core),- 1 min Jumping jacks (Full range of motion, land softly),15 min Cool down: Stretching (Focus on legs, chest, and shoulders)","Rest 30 seconds between exercises, 1 min between rounds. Focus on form over speed."
+
+### Muscle Gain - Intermediate
+muscle-gain,intermediate,tuesday,Upper Body Strength,"10 min warm-up: Dynamic stretches,Strength Training:,- 4x8-10 Bench press (Keep feet flat, arch back slightly),- 4x8-10 Shoulder press (Keep core tight, don't arch back),- 4x8-10 Incline dumbbell press (30-45 degree angle),- 4x8-10 Tricep extensions (Keep elbows close to head),Accessory Work:,- 3x12 Lateral raises (Slight bend in elbows),- 3x12 Front raises (Control the movement),Core:,- 3x20 Hanging leg raises (Keep legs straight),- 3x30 sec Plank (Engage core),15 min Cool down: Stretching","Focus on form, rest 60-90 seconds between sets. Increase weight gradually."
+
+### Full Body - Advanced
+full-body,advanced,wednesday,Power & Strength,"15 min warm-up: Dynamic movements,Strength Training:,- 5x5 Heavy squats (Full depth, chest up),- 5x5 Bench press (Full range of motion),- 4x8 Deadlifts (Maintain neutral spine),- 4x8 Overhead press (Keep core tight),Cardio: 25 min HIIT (1:1 work:rest ratio),Cool down: 20 min stretching","Focus on progressive overload. Maintain perfect form. Rest 2-3 minutes between heavy sets."
+
+### Endurance - Intermediate
+endurance,intermediate,thursday,Interval Training,"15 min warm-up: Dynamic stretches,Cardio: 45 min intervals (1:1 work:rest ratio),Strength Circuit (3 rounds):,- 20 Squats (Focus on form),- 20 Push-ups (Full range of motion),- 20 Lunges (Each leg, controlled movement),- 20 Rows (Keep back straight),Cool down: 15 min stretching","Push intensity during work intervals. Focus on recovery during rest. Maintain steady breathing."
+
+### Flexibility - Beginner
+flexibility,beginner,friday,Yoga Flow,"5 min warm-up: Gentle stretches,Yoga Sequence:,- Sun salutations (3 rounds),- Warrior poses (Hold each for 30 seconds),- Tree pose (30 seconds each side),- Bridge pose (Hold for 30 seconds),- Child's pose (Hold for 1 minute),- Corpse pose (5 minutes),10 min Cool down: Deep breathing","Focus on breath control and proper alignment. Move mindfully between poses."
+
+## Template for Creating New Workouts
+[goal],[level],[day],[title],"5 min warm-up: [warm-up exercises],
+[Main workout section]:
+- [sets]x[reps] [exercise name] ([form cues])
+- [sets]x[reps] [exercise name] ([form cues])
+[Additional sections]:
+- [sets]x[reps] [exercise name] ([form cues])
+[time] min Cool down: [cool-down exercises]","[General notes about the workout, rest periods, intensity, etc.]"
+
+## Formatting Tips
+1. Use double quotes for fields containing commas
+2. Separate exercises with commas
+3. Use hyphens (-) for individual exercises
+4. Include warm-up and cool-down periods
+5. Add form cues in parentheses
+6. Include rest periods and intensity notes
+7. Keep the format consistent with existing entries 

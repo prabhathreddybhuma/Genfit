@@ -1,0 +1,2078 @@
+:root {
+    /* Pastel Color Palette */
+    --primary-color: #A8D8EA;  /* Soft Blue */
+    --primary-gradient: linear-gradient(135deg, #A8D8EA 0%, #AA96DA 100%);
+    --secondary-color: #FCBAD3;  /* Soft Pink */
+    --accent-color: #FFFFD2;  /* Soft Yellow */
+    --background-color: #F8F9FA;
+    --text-color: #2D3748;
+    --text-secondary: #4A5568;
+    --success-color: #A8E6CF;  /* Soft Mint */
+    --warning-color: #FFD3B6;  /* Soft Peach */
+    --danger-color: #FFAAA5;  /* Soft Coral */
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --glass-effect: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --input-bg: rgba(255, 255, 255, 0.98);
+    --border-color: rgba(226, 232, 240, 0.8);
+}
+
+[data-theme="dark"] {
+    --background-color: #1A202C;
+    --text-color: #F7FAFC;
+    --text-secondary: #A0AEC0;
+    --card-bg: rgba(26, 32, 44, 0.95);
+    --input-bg: rgba(45, 55, 72, 0.95);
+    --border-color: rgba(74, 85, 104, 0.5);
+    --primary-color: #63B3ED;
+    --secondary-color: #F687B3;
+    --accent-color: #F6E05E;
+    --primary-gradient: linear-gradient(135deg, rgba(99, 179, 237, 0.2) 0%, rgba(246, 135, 179, 0.2) 100%);
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+    --glass-effect: rgba(26, 32, 44, 0.7);
+    --glass-border: rgba(74, 85, 104, 0.3);
+}
+
+[data-theme="dark"] body {
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .container {
+    background: var(--card-bg);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] header {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+}
+
+[data-theme="dark"] header h1 {
+    color: var(--text-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .name-input {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+}
+
+[data-theme="dark"] .input-group,
+[data-theme="dark"] .unit-toggle,
+[data-theme="dark"] .height-inputs {
+    background: var(--input-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select {
+    background: var(--input-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .bmi-result,
+[data-theme="dark"] .fitness-level,
+[data-theme="dark"] .workout-day {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .quirky-messages .message {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .chatbot-container {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .chat-messages {
+    background: var(--background-color);
+}
+
+[data-theme="dark"] .chat-input {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .chat-input input {
+    background: var(--input-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .bot-message {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .chatbot-footer {
+    border-top: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] footer {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .nav-container {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .dashboard-card,
+[data-theme="dark"] .chart-container,
+[data-theme="dark"] .modal-content {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .tooltip .tooltip-text,
+[data-theme="dark"] .dropdown-content {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .notification {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 3rem;
+    background: var(--primary-gradient);
+    border-radius: 15px;
+    color: white;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: white;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header p {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] header h1 {
+    color: var(--text-color);
+    text-shadow: 0 2px 10px rgba(96, 165, 250, 0.3);
+}
+
+[data-theme="dark"] header p {
+    color: var(--text-color);
+}
+
+/* Remove the gradient text effect */
+header h1::before {
+    display: none;
+}
+
+/* Remove the glow animation */
+@keyframes glow {
+    from, to {
+        text-shadow: none;
+    }
+}
+
+/* Title selection color in light mode */
+header h1::selection {
+    background: var(--secondary-color);
+    color: white;
+}
+
+header h1::-moz-selection {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Keep other selection colors unchanged */
+::selection {
+    background: var(--primary-color);
+    color: white;
+}
+
+::-moz-selection {
+    background: var(--primary-color);
+    color: white;
+}
+
+section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+    animation: slideUp 0.5s ease-out;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+section:hover::before {
+    opacity: 1;
+}
+
+.input-group {
+    position: relative;
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.input-group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+
+.input-group:hover::before {
+    transform: translateX(100%);
+}
+
+.input-group:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    border-color: var(--secondary-color);
+}
+
+.input-group label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.input-group label i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.input-group:hover label i {
+    color: var(--secondary-color);
+}
+
+input, select {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--input-bg);
+    color: var(--text-color);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(168, 216, 234, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 1.2rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+.profile-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.bmi-result, .fitness-level {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+}
+
+.bmi-result:hover, .fitness-level:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+}
+
+.bmi-category {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.workout-plan {
+    margin-top: 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.workout-schedule {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.workout-day {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+}
+
+.workout-day:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+}
+
+.workout-day h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.chatbot {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 380px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.chatbot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary-gradient);
+    color: white;
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chatbot-header:hover {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.chatbot-container {
+    background: var(--card-bg);
+    display: none;
+    height: 400px;
+    transition: all 0.3s ease;
+    flex-direction: column;
+}
+
+.chatbot-container.active {
+    display: flex;
+    animation: slideUp 0.3s ease-out;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    background: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message {
+    max-width: 80%;
+    padding: 1rem;
+    border-radius: 15px;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.message-content {
+    word-wrap: break-word;
+    line-height: 1.5;
+}
+
+.message-timestamp {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+    display: block;
+    text-align: right;
+}
+
+.user-message {
+    background: var(--primary-gradient);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+    background: var(--card-bg);
+    color: var(--text-color);
+    margin-right: auto;
+    border-bottom-left-radius: 5px;
+    box-shadow: var(--card-shadow);
+}
+
+.chat-input {
+    display: flex;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    gap: 0.5rem;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border-radius: 25px;
+    border: 2px solid var(--border-color);
+    background: var(--input-bg);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.chat-input input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(168, 216, 234, 0.2);
+}
+
+.chat-input button {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-input button:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+}
+
+.chat-input button i {
+    font-size: 1.2rem;
+}
+
+/* Dark theme adjustments for chatbot */
+[data-theme="dark"] .chatbot-container {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .chat-messages {
+    background: var(--background-color);
+}
+
+[data-theme="dark"] .chat-input {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .chat-input input {
+    background: var(--input-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .bot-message {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+/* Responsive adjustments for chatbot */
+@media (max-width: 768px) {
+    .chatbot {
+        width: 100%;
+        right: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+
+    .chatbot-header {
+        border-radius: 0;
+    }
+
+    .chatbot-container {
+        border-radius: 0;
+        height: 350px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.header-icons {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 2rem;
+    opacity: 0.8;
+}
+
+.header-icons i {
+    animation: float 3s ease-in-out infinite;
+}
+
+.header-icons i:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.header-icons i:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.input-group i {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+.bmi-result i,
+.fitness-level i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.workout-plan h3 i {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--secondary-color);
+    opacity: 0.8;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    margin-top: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.name-input {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    padding: 2.5rem;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.name-input:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+
+.name-input h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.name-input input {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 1.2rem;
+    text-align: center;
+    background: var(--input-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.name-input input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.name-form {
+    margin-top: 2rem;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    border: 2px solid var(--primary-color);
+}
+
+.name-form::selection {
+    background: var(--primary-color);
+    color: white;
+}
+
+.name-form::-moz-selection {
+    background: var(--primary-color);
+    color: white;
+}
+
+#userNameDisplay,
+#userNameDisplayResults {
+    color: var(--primary-color);
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(168, 216, 234, 0.1);
+    transition: all 0.3s ease;
+}
+
+#userNameDisplay:hover,
+#userNameDisplayResults:hover {
+    background: rgba(168, 216, 234, 0.2);
+}
+
+/* Selection color for user name */
+#userNameDisplay::selection,
+#userNameDisplayResults::selection {
+    background: var(--secondary-color);
+    color: white;
+}
+
+#userNameDisplay::-moz-selection,
+#userNameDisplayResults::-moz-selection {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] #userNameDisplay,
+[data-theme="dark"] #userNameDisplayResults {
+    color: var(--accent-color);
+    background: rgba(255, 255, 210, 0.1);
+}
+
+[data-theme="dark"] #userNameDisplay:hover,
+[data-theme="dark"] #userNameDisplayResults:hover {
+    background: rgba(255, 255, 210, 0.2);
+}
+
+[data-theme="dark"] #userNameDisplay::selection,
+[data-theme="dark"] #userNameDisplayResults::selection {
+    background: var(--secondary-color);
+    color: white;
+}
+
+[data-theme="dark"] #userNameDisplay::-moz-selection,
+[data-theme="dark"] #userNameDisplayResults::-moz-selection {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Enhanced Select Dropdown Styles */
+select {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--input-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234a90e2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 20px;
+}
+
+select:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+select option {
+    padding: 12px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+select option:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Custom Select Container */
+.input-group select {
+    margin-top: 8px;
+}
+
+/* Select Label Enhancement */
+.input-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.input-group label i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* Select Focus State */
+.input-group:focus-within label {
+    color: var(--accent-color);
+}
+
+.input-group:focus-within label i {
+    color: var(--accent-color);
+}
+
+/* Select Animation */
+select {
+    transform: translateY(0);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+select:active {
+    transform: translateY(1px);
+}
+
+/* Select Disabled State */
+select:disabled {
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* Select Error State */
+select.error {
+    border-color: var(--danger-color);
+    background-color: rgba(255, 82, 82, 0.05);
+}
+
+/* Select Success State */
+select.success {
+    border-color: var(--success-color);
+    background-color: rgba(76, 175, 80, 0.05);
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.loading {
+    animation: pulse 1.5s infinite;
+}
+
+/* Success Message */
+.success-message {
+    background: rgba(46, 204, 113, 0.1);
+    border: 1px solid var(--success-color);
+    color: var(--success-color);
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Remove progress section styles */
+.progress-section,
+.progress-stats,
+.stat,
+.progress-charts {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    header {
+        padding: 2rem;
+        border-radius: 20px;
+    }
+
+    section {
+        padding: 2rem;
+        border-radius: 20px;
+    }
+
+    .input-group {
+        padding: 1.2rem;
+    }
+
+    .workout-schedule {
+        grid-template-columns: 1fr;
+    }
+
+    .chatbot {
+        width: 100%;
+        right: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+
+    .chatbot-header {
+        border-radius: 0;
+    }
+
+    .chatbot-container {
+        border-radius: 0;
+        height: 350px;
+    }
+}
+
+/* Quirky Messages Styles */
+.quirky-messages {
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.quirky-messages .message {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.quirky-messages .message::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.quirky-messages .message:hover::after {
+    transform: scaleX(1);
+}
+
+.quirky-messages .message:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.quirky-messages .message i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    background: rgba(74, 144, 226, 0.1);
+    padding: 0.8rem;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quirky-messages .message:nth-child(1) i {
+    color: var(--warning-color);
+    background: rgba(241, 196, 15, 0.1);
+}
+
+.quirky-messages .message:nth-child(2) i {
+    color: var(--success-color);
+    background: rgba(46, 204, 113, 0.1);
+}
+
+.quirky-messages .message:nth-child(3) i {
+    color: var(--accent-color);
+    background: rgba(255, 107, 107, 0.1);
+}
+
+@media (max-width: 768px) {
+    .quirky-messages {
+        grid-template-columns: 1fr;
+    }
+    
+    .quirky-messages .message {
+        font-size: 1rem;
+        padding: 1.2rem;
+    }
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
+}
+
+/* Print Button */
+.print-button {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
+}
+
+.print-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+}
+
+.print-button i {
+    font-size: 1.2rem;
+}
+
+/* Header Controls */
+.header-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+/* Print Styles */
+@media print {
+    @page {
+        size: A4;
+        margin: 2cm;
+    }
+
+    body {
+        background: white;
+        color: black;
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    header, .theme-toggle, .print-button, .chatbot, .name-input, .user-input {
+        display: none !important;
+    }
+
+    /* Report Header */
+    .results::before {
+        content: "FITNESS REPORT";
+        display: block;
+        font-size: 24pt;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 1cm;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.5cm;
+    }
+
+    /* User Details Section */
+    .user-details {
+        display: block !important;
+        background: #f8f9fa;
+        border: 1px solid #ddd;
+        padding: 1cm;
+        margin-bottom: 1cm;
+        page-break-after: always;
+    }
+
+    .user-details h3 {
+        font-size: 16pt;
+        color: var(--primary-color);
+        margin-bottom: 0.5cm;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 0.3cm;
+    }
+
+    .user-details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5cm;
+    }
+
+    .user-detail-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.3cm;
+        border-bottom: 1px solid #eee;
+    }
+
+    .user-detail-label {
+        font-weight: bold;
+        color: #666;
+    }
+
+    .user-detail-value {
+        color: #333;
+    }
+
+    /* Profile Section */
+    .profile-card {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1cm;
+    }
+
+    .bmi-result, .fitness-level {
+        flex: 1;
+        background: white;
+        border: 1px solid #ddd;
+        padding: 1cm;
+        margin: 0 0.5cm;
+        text-align: center;
+    }
+
+    .bmi-result h3, .fitness-level h3 {
+        font-size: 14pt;
+        margin-bottom: 0.5cm;
+    }
+
+    .bmi-category {
+        font-size: 12pt;
+        padding: 0.3cm;
+        border-radius: 0.2cm;
+    }
+
+    /* Workout Plan Section */
+    .workout-plan {
+        margin-top: 1cm;
+    }
+
+    .workout-plan h3 {
+        font-size: 18pt;
+        color: var(--primary-color);
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 0.3cm;
+        margin-bottom: 0.5cm;
+    }
+
+    .workout-schedule {
+        display: block;
+    }
+
+    .workout-day {
+        background: white;
+        border: 1px solid #ddd;
+        margin-bottom: 0.5cm;
+        padding: 0.5cm;
+        page-break-inside: avoid;
+    }
+
+    .workout-day h4 {
+        font-size: 14pt;
+        color: var(--primary-color);
+        margin-bottom: 0.3cm;
+    }
+
+    .workout-day h5 {
+        font-size: 12pt;
+        font-weight: bold;
+        margin-bottom: 0.3cm;
+    }
+
+    .workout-details ul {
+        margin-left: 1cm;
+        margin-bottom: 0.3cm;
+    }
+
+    .workout-details li {
+        margin-bottom: 0.2cm;
+    }
+
+    .workout-notes {
+        border-top: 1px solid #ddd;
+        margin-top: 0.3cm;
+        padding-top: 0.3cm;
+        font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 10pt;
+        color: #666;
+        border-top: 1px solid #ddd;
+        padding-top: 0.3cm;
+    }
+
+    footer::before {
+        content: "Generated by Gen Fit - Your AI Fitness Companion";
+    }
+
+    /* Page Numbers */
+    @page {
+        @bottom-right {
+            content: counter(page);
+            font-size: 10pt;
+        }
+    }
+
+    /* Hide Quirky Messages */
+    .quirky-messages {
+        display: none;
+    }
+
+    /* Equipment Note */
+    .equipment-note {
+        background: #f5f5f5;
+        padding: 0.3cm;
+        margin-bottom: 0.5cm;
+        border-left: 3px solid var(--primary-color);
+        font-style: italic;
+    }
+
+    /* Print-specific Enhancements */
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    /* Ensure proper spacing between sections */
+    section {
+        margin-bottom: 1cm;
+    }
+
+    /* Add date and time */
+    .results::after {
+        content: "Generated on: " attr(data-date);
+        display: block;
+        text-align: right;
+        font-size: 10pt;
+        color: #666;
+        margin-top: 0.5cm;
+    }
+}
+
+/* Dark Theme Specific Styles */
+[data-theme="dark"] body {
+    background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
+}
+
+[data-theme="dark"] header {
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(20, 20, 20, 0.9) 100%);
+}
+
+[data-theme="dark"] section {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .input-group {
+    background: var(--input-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] input, 
+[data-theme="dark"] select {
+    background: rgba(40, 40, 40, 0.9);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .workout-day {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .quirky-messages .message {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+/* Print-only elements */
+.print-only {
+    display: none;
+}
+
+@media print {
+    .print-only {
+        display: block !important;
+    }
+}
+
+/* Unit Selection Styles */
+.unit-selection {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.unit-select {
+    width: auto !important;
+    min-width: 100px;
+    padding: 0.8rem 1rem !important;
+}
+
+.unit-label {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.height-inputs {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.height-inputs:hover {
+    border-color: var(--secondary-color);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+
+.height-inputs input {
+    width: 120px;
+    padding: 1rem 1.2rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    font-size: 1.2rem;
+    text-align: center;
+    background: white;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.height-inputs input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(252, 186, 211, 0.2);
+    transform: scale(1.02);
+}
+
+.height-inputs label {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+}
+
+/* Unit Toggle for Height */
+.unit-toggle {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: white;
+    padding: 1.2rem;
+    border-radius: 15px;
+    border: 2px solid var(--primary-color);
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.unit-toggle:hover {
+    border-color: var(--secondary-color);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 65px;
+    height: 36px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-color);
+    transition: .4s;
+    border-radius: 34px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 28px;
+    width: 28px;
+    left: 4px;
+    bottom: 4px;
+    background: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+    background: var(--secondary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(29px);
+}
+
+.unit-label {
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    background: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+        border-radius: 20px;
+    }
+
+    header {
+        padding: 2rem;
+        border-radius: 20px;
+    }
+
+    header h1 {
+        font-size: 2.8rem;
+    }
+
+    .name-input {
+        padding: 2rem;
+        margin: 0 1rem 2rem;
+    }
+
+    .name-input h2 {
+        font-size: 2rem;
+    }
+
+    .height-inputs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .height-inputs input {
+        width: 100%;
+    }
+
+    .unit-toggle {
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+    }
+}
+
+/* Enhanced Dark Theme */
+[data-theme="dark"] {
+    --card-bg: rgba(30, 30, 30, 0.95);
+    --input-bg: rgba(40, 40, 40, 0.8);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-color: #e0e0e0;
+}
+
+[data-theme="dark"] .input-group,
+[data-theme="dark"] .unit-toggle,
+[data-theme="dark"] .height-inputs {
+    background: var(--input-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select {
+    background: var(--input-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .bmi-result,
+[data-theme="dark"] .fitness-level,
+[data-theme="dark"] .workout-day {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .quirky-messages .message {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+/* Enhanced Navigation */
+.nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--card-shadow);
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Enhanced Dashboard Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 6rem;
+}
+
+.dashboard-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.4);
+    border-color: var(--primary-color);
+}
+
+.dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dashboard-card:hover::before {
+    opacity: 1;
+}
+
+/* Enhanced Progress Indicators */
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary-gradient);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* Enhanced Tooltips */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    background: var(--card-bg);
+    color: var(--text-color);
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Enhanced Loading States */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Notifications */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 2rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+/* Enhanced Form Validation */
+.input-error {
+    border-color: var(--danger-color) !important;
+    background: rgba(255, 154, 162, 0.1) !important;
+}
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Enhanced Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    max-width: 500px;
+    width: 90%;
+}
+
+.modal-overlay.show .modal-content {
+    transform: scale(1);
+}
+
+/* Enhanced Charts */
+.chart-container {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    margin-bottom: 2rem;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+}
+
+/* Enhanced Tabs */
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.tab {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tab::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.tab.active::after {
+    width: 100%;
+}
+
+.tab.active {
+    color: var(--primary-color);
+}
+
+/* Enhanced Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Enhanced Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
+
+/* Enhanced Dark Theme */
+[data-theme="dark"] .nav-container {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .dashboard-card,
+[data-theme="dark"] .chart-container,
+[data-theme="dark"] .modal-content {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .tooltip .tooltip-text,
+[data-theme="dark"] .dropdown-content {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .notification {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+/* Remove neon effects */
+.neon-text {
+    display: none;
+}
+
+.neon-border {
+    display: none;
+}
+
+@keyframes neon-pulse {
+    from, to {
+        opacity: 0;
+    }
+}
+
+@keyframes neon-border-pulse {
+    from, to {
+        opacity: 0;
+    }
+}
+
+/* Selection Color */
+::selection {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Dark theme selection color */
+[data-theme="dark"] ::selection {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Remove any existing selection styles */
+::-moz-selection {
+    background: var(--primary-color);
+    color: white;
+}
+
+[data-theme="dark"] ::-moz-selection {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Chatbot Footer */
+.chatbot-footer {
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    background: var(--card-bg);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.chatbot-footer p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+[data-theme="dark"] .chatbot-footer {
+    border-top: 1px solid var(--border-color);
+} 

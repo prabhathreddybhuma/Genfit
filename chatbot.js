@@ -1,0 +1,178 @@
+// Chatbot functionality
+class Chatbot {
+    constructor() {
+        this.chatbotContainer = document.querySelector('.chatbot-container');
+        this.chatMessages = document.querySelector('.chat-messages');
+        this.chatInput = document.querySelector('.chat-input input');
+        this.sendButton = document.querySelector('.chat-input button');
+        this.chatbotHeader = document.querySelector('.chatbot-header');
+        this.isOpen = false;
+        this.apiKey = 'AIzaSyD7Qb6lgYu4e8vf3IuhhQ2pEj5UxrSX4pk'; // Set API key directly
+        this.conversationHistory = [];
+        this.systemPrompt = `You are a fitness assistant named Gen Fit. Your role is to help users with their fitness journey by providing:
+- Personalized workout advice
+- Nutrition tips
+- Exercise form guidance
+- Progress tracking suggestions
+- Motivation and encouragement
+- Answering fitness-related questions
+- Providing modifications for exercises
+- Explaining fitness concepts in simple terms
+
+Always be professional, encouraging, and safety-conscious. If you don't know something, say so rather than making up information.`;
+
+        this.initialize();
+    }
+
+    initialize() {
+        // Toggle chatbot visibility
+        this.chatbotHeader.addEventListener('click', () => {
+            this.toggleChatbot();
+        });
+
+        // Send message on button click
+        this.sendButton.addEventListener('click', () => {
+            this.sendMessage();
+        });
+
+        // Send message on Enter key
+        this.chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.sendMessage();
+            }
+        });
+
+        // Add system prompt to conversation history
+        this.conversationHistory.push({
+            role: 'system',
+            parts: [{ text: this.systemPrompt }]
+        });
+    }
+
+    toggleChatbot() {
+        this.isOpen = !this.isOpen;
+        this.chatbotContainer.classList.toggle('active');
+        // Update chevron icon
+        const chevron = this.chatbotHeader.querySelector('i');
+        chevron.classList.toggle('fa-chevron-down');
+        chevron.classList.toggle('fa-chevron-up');
+    }
+
+    async sendMessage() {
+        const message = this.chatInput.value.trim();
+        if (!message) return;
+
+        // Add user message to chat
+        this.addMessage(message, 'user');
+        this.chatInput.value = '';
+
+        // Show loading state
+        const loadingMessage = this.addMessage('Thinking...', 'bot');
+        
+        try {
+            const response = await this.getGeminiResponse(message);
+            // Remove loading message
+            loadingMessage.remove();
+            // Add actual response
+            this.addMessage(response, 'bot');
+        } catch (error) {
+            console.error('Error:', error);
+            loadingMessage.remove();
+            this.addMessage('Sorry, I encountered an error. Please try again.', 'bot');
+        }
+    }
+
+    async getGeminiResponse(message) {
+        try {
+            // Add message to conversation history
+            this.conversationHistory.push({
+                role: 'user',
+                parts: [{ text: message }]
+            });
+
+            // Check if API key is valid
+            if (!this.apiKey || this.apiKey.length < 10) {
+                throw new Error('Invalid API key configuration');
+            }
+
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${this.apiKey}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{ text: message }]
+                    }]
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('API Error Response:', errorData);
+                
+                // Handle specific error cases
+                if (response.status === 404) {
+                    throw new Error('API endpoint not found. Please check the API configuration.');
+                } else if (response.status === 403) {
+                    throw new Error('API key is invalid or has insufficient permissions.');
+                } else {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+            }
+
+            const data = await response.json();
+            console.log('API Response:', data); // Log the response for debugging
+            
+            if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+                const botResponse = data.candidates[0].content.parts[0].text;
+                
+                // Add bot response to conversation history
+                this.conversationHistory.push({
+                    role: 'model',
+                    parts: [{ text: botResponse }]
+                });
+
+                return botResponse;
+            } else {
+                console.error('Invalid API Response:', data);
+                throw new Error('Invalid response from Gemini API');
+            }
+        } catch (error) {
+            console.error('API Error:', error);
+            return 'I apologize, but I\'m having trouble connecting to the AI service. Please check your API key and try again.';
+        }
+    }
+
+    addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', `${sender}-message`);
+        
+        // Add timestamp
+        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const timestampSpan = document.createElement('span');
+        timestampSpan.classList.add('message-timestamp');
+        timestampSpan.textContent = timestamp;
+        
+        // Add message content
+        const contentDiv = document.createElement('div');
+        contentDiv.classList.add('message-content');
+        contentDiv.textContent = text;
+        
+        messageDiv.appendChild(contentDiv);
+        messageDiv.appendChild(timestampSpan);
+        
+        this.chatMessages.appendChild(messageDiv);
+        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+        return messageDiv;
+    }
+
+    setApiKey(key) {
+        this.apiKey = key;
+    }
+}
+
+// Initialize chatbot when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    window.chatbot = new Chatbot();
+}); 
