@@ -6,14 +6,11 @@ class Chatbot {
         this.chatInput = document.querySelector('.chat-input input');
         this.sendButton = document.querySelector('.chat-input button');
         this.chatbotHeader = document.querySelector('.chatbot-header');
+        this.chatbot = document.getElementById('chatbot');
         this.isOpen = false;
         this.apiKey = 'AIzaSyD7Qb6lgYu4e8vf3IuhhQ2pEj5UxrSX4pk';
         this.conversationHistory = [];
         this.userName = '';
-        this.nameEntryModal = document.getElementById('nameEntryModal');
-        this.userNameInput = document.getElementById('userNameInput');
-        this.submitNameButton = document.getElementById('submitName');
-        this.chatbot = document.getElementById('chatbot');
 
         this.systemPrompt = `You are Gen Fit, a professional fitness coach. Your role is to help users with their fitness journey by providing:
 - Personalized workout advice
@@ -31,16 +28,17 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
     }
 
     initialize() {
-        // Handle name entry
-        this.submitNameButton.addEventListener('click', () => {
-            const name = this.userNameInput.value.trim();
-            if (name) {
-                this.userName = name;
-                this.nameEntryModal.style.display = 'none';
-                this.chatbot.style.display = 'block';
-                this.addWelcomeMessage();
-            }
-        });
+        // Show chatbot only after name is submitted
+        const submitNameBtn = document.getElementById('submitName');
+        if (submitNameBtn) {
+            submitNameBtn.addEventListener('click', () => {
+                const nameInput = document.getElementById('userName');
+                if (nameInput && nameInput.value.trim()) {
+                    this.userName = nameInput.value.trim();
+                    this.chatbot.style.display = 'block';
+                }
+            });
+        }
 
         // Toggle chatbot visibility
         this.chatbotHeader.addEventListener('click', () => {
@@ -64,11 +62,6 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
             role: 'system',
             parts: [{ text: this.systemPrompt }]
         });
-    }
-
-    addWelcomeMessage() {
-        const welcomeMessage = `Welcome ${this.userName}! I'm Gen Fit, your personal fitness coach. I'm here to help you achieve your fitness goals. What would you like to work on today?`;
-        this.addMessage(welcomeMessage, 'bot');
     }
 
     toggleChatbot() {
@@ -132,35 +125,28 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
 
             let responseText = data.candidates[0].content.parts[0].text;
             
-            // Format the response with sections
-            responseText = this.formatResponse(responseText);
-            
+            // Add motivational phrase
+            const motivationalPhrases = [
+                "Let's crush those fitness goals!",
+                "You've got this!",
+                "Stay consistent and the results will follow!",
+                "Remember, progress takes time and dedication!",
+                "Keep pushing your limits!",
+                "Every workout counts!",
+                "Stay focused on your journey!",
+                "Your hard work will pay off!",
+                "Consistency is key to success!",
+                "Believe in yourself and your abilities!"
+            ];
+
+            const randomPhrase = motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
+            responseText = `${responseText}\n\n💪 ${randomPhrase}`;
+
             return responseText;
         } catch (error) {
             console.error('Error getting Gemini response:', error);
             return "I'm having trouble connecting right now. Please try again in a few moments. Remember, consistency is key to your fitness journey!";
         }
-    }
-
-    formatResponse(text) {
-        // Add motivational phrase
-        const motivationalPhrases = [
-            "Let's crush those fitness goals!",
-            "You've got this!",
-            "Stay consistent and the results will follow!",
-            "Remember, progress takes time and dedication!",
-            "Keep pushing your limits!",
-            "Every workout counts!",
-            "Stay focused on your journey!",
-            "Your hard work will pay off!",
-            "Consistency is key to success!",
-            "Believe in yourself and your abilities!"
-        ];
-
-        const randomPhrase = motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
-        
-        // Format the response with sections
-        return `${text}\n\n💪 ${randomPhrase}`;
     }
 
     addMessage(text, sender) {
