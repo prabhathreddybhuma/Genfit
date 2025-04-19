@@ -84,63 +84,55 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
 
     async getGeminiResponse(message) {
         try {
-            // Add message to conversation history
-            this.conversationHistory.push({
-                role: 'user',
-                parts: [{ text: message }]
-            });
-
-            // Check if API key is valid
-            if (!this.apiKey || this.apiKey.length < 10) {
-                throw new Error('Invalid API key configuration');
-            }
-
             const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${this.apiKey}`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     contents: [{
-                        parts: [{ text: message }]
+                        parts: [{
+                            text: `You are a professional fitness coach. Respond to the following message with a motivational, encouraging, and professional tone. Use fitness-specific terminology and provide actionable advice. Keep responses concise but informative. Here's the message: ${message}`
+                        }]
                     }]
                 })
             });
 
             if (!response.ok) {
-                const errorData = await response.json();
-                console.error('API Error Response:', errorData);
-                
-                // Handle specific error cases
-                if (response.status === 404) {
-                    throw new Error('API endpoint not found. Please check the API configuration.');
-                } else if (response.status === 403) {
-                    throw new Error('API key is invalid or has insufficient permissions.');
-                } else {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                throw new Error(`API request failed with status ${response.status}`);
             }
 
             const data = await response.json();
-            console.log('API Response:', data); // Log the response for debugging
             
-            if (data.candidates && data.candidates[0] && data.candidates[0].content) {
-                const botResponse = data.candidates[0].content.parts[0].text;
-                
-                // Add bot response to conversation history
-                this.conversationHistory.push({
-                    role: 'model',
-                    parts: [{ text: botResponse }]
-                });
-
-                return botResponse;
-            } else {
-                console.error('Invalid API Response:', data);
-                throw new Error('Invalid response from Gemini API');
+            if (!data.candidates || !data.candidates[0] || !data.candidates[0].content || !data.candidates[0].content.parts || !data.candidates[0].content.parts[0] || !data.candidates[0].content.parts[0].text) {
+                throw new Error('Invalid API response format');
             }
+
+            // Add fitness coach style to the response
+            let responseText = data.candidates[0].content.parts[0].text;
+            
+            // Add motivational phrases and fitness-specific language
+            const motivationalPhrases = [
+                "Let's crush those fitness goals!",
+                "You've got this!",
+                "Stay consistent and the results will follow!",
+                "Remember, progress takes time and dedication!",
+                "Keep pushing your limits!",
+                "Every workout counts!",
+                "Stay focused on your journey!",
+                "Your hard work will pay off!",
+                "Consistency is key to success!",
+                "Believe in yourself and your abilities!"
+            ];
+
+            // Add a random motivational phrase to the response
+            const randomPhrase = motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
+            responseText = `${responseText}\n\n${randomPhrase}`;
+
+            return responseText;
         } catch (error) {
-            console.error('API Error:', error);
-            return 'I apologize, but I\'m having trouble connecting to the AI service. Please check your API key and try again.';
+            console.error('Error getting Gemini response:', error);
+            return "I'm having trouble connecting to the fitness coaching service right now. Please try again in a few moments. Remember, consistency is key to your fitness journey!";
         }
     }
 
