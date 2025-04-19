@@ -97,6 +97,37 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
         }
     }
 
+    formatResponse(text) {
+        // Format headers
+        text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        
+        // Format bullet points
+        text = text.replace(/\* (.*?)(?=\n|$)/g, '• $1');
+        
+        // Add emoji indicators for different sections
+        text = text.replace(/Warm-up/g, '🔥 Warm-up');
+        text = text.replace(/Strength Training/g, '💪 Strength Training');
+        text = text.replace(/Cardio/g, '🏃‍♂️ Cardio');
+        text = text.replace(/Cool-down/g, '🧘‍♂️ Cool-down');
+        text = text.replace(/Sample Weekly Schedule/g, '📅 Sample Weekly Schedule');
+        text = text.replace(/Actionable Advice/g, '💡 Actionable Advice');
+        
+        // Add styling for days of the week
+        text = text.replace(/(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday):/g, '<strong>$1:</strong>');
+        
+        // Format sections
+        const sections = text.split('\n\n');
+        const formattedSections = sections.map(section => {
+            if (section.includes('💪') || section.includes('🔥') || section.includes('🏃‍♂️') || 
+                section.includes('🧘‍♂️') || section.includes('📅') || section.includes('💡')) {
+                return `<div class="section">${section}</div>`;
+            }
+            return section;
+        });
+        
+        return formattedSections.join('\n\n');
+    }
+
     async getGeminiResponse(message) {
         try {
             const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${this.apiKey}`, {
@@ -107,7 +138,7 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
                 body: JSON.stringify({
                     contents: [{
                         parts: [{
-                            text: `${this.systemPrompt}\n\nUser's name: ${this.userName}\n\nMessage: ${message}\n\nPlease respond as a professional fitness coach, using the user's name occasionally to make it more personal. Keep responses concise but informative, and always include actionable advice.`
+                            text: `${this.systemPrompt}\n\nUser's name: ${this.userName}\n\nMessage: ${message}\n\nPlease respond as a professional fitness coach, using the user's name occasionally to make it more personal. Format your response with clear sections using ** for headers and * for bullet points. Keep responses concise but informative, and always include actionable advice.`
                         }]
                     }]
                 })
@@ -125,27 +156,30 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
 
             let responseText = data.candidates[0].content.parts[0].text;
             
+            // Format the response
+            responseText = this.formatResponse(responseText);
+            
             // Add motivational phrase
             const motivationalPhrases = [
-                "Let's crush those fitness goals!",
-                "You've got this!",
-                "Stay consistent and the results will follow!",
-                "Remember, progress takes time and dedication!",
-                "Keep pushing your limits!",
-                "Every workout counts!",
-                "Stay focused on your journey!",
-                "Your hard work will pay off!",
-                "Consistency is key to success!",
-                "Believe in yourself and your abilities!"
+                "Let's crush those fitness goals! 💪",
+                "You've got this! 🎯",
+                "Stay consistent and the results will follow! 📈",
+                "Remember, progress takes time and dedication! 🌱",
+                "Keep pushing your limits! 🚀",
+                "Every workout counts! 💫",
+                "Stay focused on your journey! 🎯",
+                "Your hard work will pay off! ⭐",
+                "Consistency is key to success! 🔑",
+                "Believe in yourself and your abilities! 🌟"
             ];
 
             const randomPhrase = motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
-            responseText = `${responseText}\n\n💪 ${randomPhrase}`;
+            responseText = `${responseText}\n\n${randomPhrase}`;
 
             return responseText;
         } catch (error) {
             console.error('Error getting Gemini response:', error);
-            return "I'm having trouble connecting right now. Please try again in a few moments. Remember, consistency is key to your fitness journey!";
+            return "I'm having trouble connecting right now. Please try again in a few moments. Remember, consistency is key to your fitness journey! 💪";
         }
     }
 
@@ -163,7 +197,7 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
         const contentDiv = document.createElement('div');
         contentDiv.classList.add('message-content');
         
-        // Replace newlines with <br> and add emojis
+        // Replace newlines with <br> and preserve HTML formatting
         const formattedText = text
             .replace(/\n\n/g, '<br><br>')
             .replace(/\n/g, '<br>');

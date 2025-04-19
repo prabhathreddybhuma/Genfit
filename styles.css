@@ -526,8 +526,60 @@ input:focus, select:focus {
 }
 
 .message-content {
-    word-wrap: break-word;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.message-content strong {
+    color: var(--primary-color);
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.message-content .section {
+    background: rgba(var(--primary-rgb), 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    border-left: 3px solid var(--primary-color);
+}
+
+.message-content ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.message-content li {
+    margin-bottom: 0.5rem;
+}
+
+.bot-message .message-content {
+    color: var(--text-color);
+}
+
+.user-message .message-content {
+    color: white;
+}
+
+/* Emoji styling */
+.message-content em {
+    font-style: normal;
+    margin-right: 0.5rem;
+}
+
+/* Bullet points */
+.message-content • {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+/* Add some spacing between sections */
+.message-content br + br {
+    content: "";
+    display: block;
+    margin-top: 0.5rem;
 }
 
 .message-timestamp {
