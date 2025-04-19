@@ -2147,39 +2147,42 @@ input:checked + .slider:before {
 
     .container {
         padding: 1rem;
-        border-radius: 15px;
         margin: 0;
-        width: 100%;
+        border-radius: 15px;
     }
 
     header {
-        padding: 1.5rem;
+        padding: 1.5rem 1rem;
         margin-bottom: 1.5rem;
-        border-radius: 15px;
+        text-align: center;
     }
 
     header h1 {
         font-size: 2rem;
+        margin-bottom: 0.5rem;
     }
 
     header p {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .header-icons {
-        gap: 1rem;
+        gap: 1.5rem;
         font-size: 1.5rem;
+        margin-top: 1rem;
     }
 
     .header-controls {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.8rem;
+        margin-top: 1.2rem;
     }
 
     .theme-toggle,
     .print-button {
         width: 100%;
-        justify-content: center;
+        padding: 0.8rem;
+        font-size: 0.9rem;
     }
 
     section {
@@ -2189,16 +2192,17 @@ input:checked + .slider:before {
     }
 
     .input-group {
-        padding: 1.2rem;
-        margin-bottom: 1.2rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
     }
 
     .input-group label {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
     }
 
     input, select {
-        padding: 0.8rem 1rem;
+        padding: 0.8rem;
         font-size: 1rem;
     }
 
@@ -2238,6 +2242,7 @@ input:checked + .slider:before {
 
     .workout-schedule {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .workout-day {
@@ -2249,16 +2254,20 @@ input:checked + .slider:before {
         width: 100%;
         right: 0;
         bottom: 0;
-        border-radius: 0;
-        position: fixed;
+        border-radius: 15px 15px 0 0;
     }
 
     .chatbot-header {
         padding: 1rem;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .chatbot-header h3 {
+        font-size: 1.1rem;
     }
 
     .chatbot-container {
-        height: 70vh;
+        height: 60vh;
         max-height: 500px;
     }
 
@@ -2267,8 +2276,9 @@ input:checked + .slider:before {
     }
 
     .message {
-        max-width: 90%;
+        max-width: 85%;
         padding: 0.8rem;
+        font-size: 0.95rem;
     }
 
     .chat-input {
@@ -2276,21 +2286,23 @@ input:checked + .slider:before {
     }
 
     .chat-input input {
-        padding: 0.8rem 1rem;
+        padding: 0.8rem;
+        font-size: 0.95rem;
     }
 
     .chat-input button {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
     }
 
     /* Form Elements */
     .name-form {
-        padding: 1.2rem;
+        padding: 1rem;
     }
 
     .name-input h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
     }
 
     .name-input input {
@@ -2308,6 +2320,8 @@ input:checked + .slider:before {
     footer {
         padding: 1rem;
         font-size: 0.8rem;
+        margin-top: 1rem;
+        margin-bottom: 60px; /* Space for chatbot */
     }
 
     /* Navigation */
@@ -2356,19 +2370,20 @@ input:checked + .slider:before {
     }
 
     .input-group {
-        padding: 1rem;
+        padding: 0.8rem;
     }
 
     .chatbot-container {
-        height: 60vh;
+        height: 50vh;
     }
 
     .message {
-        max-width: 95%;
+        max-width: 90%;
+        font-size: 0.9rem;
     }
 
-    .btn-primary {
-        padding: 0.8rem;
+    .chat-input input {
+        font-size: 0.9rem;
     }
 }
 
@@ -2378,8 +2393,20 @@ input:checked + .slider:before {
         height: 80vh;
     }
 
-    .chat-messages {
-        max-height: calc(80vh - 120px);
+    .header {
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 1.6rem;
+    }
+
+    .input-group {
+        padding: 0.8rem;
+    }
+
+    .profile-card {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -2440,4 +2467,332 @@ img {
 html,
 body {
     overscroll-behavior: none;
+}
+
+/* Enhanced Mobile Responsive Styles */
+@media (max-width: 768px) {
+    /* Container and Layout */
+    .container {
+        padding: 1rem;
+        margin: 0;
+        border-radius: 15px;
+    }
+
+    /* Header */
+    header {
+        padding: 1.5rem 1rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .header-icons {
+        gap: 1.5rem;
+        font-size: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .header-controls {
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-top: 1.2rem;
+    }
+
+    .theme-toggle,
+    .print-button {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    /* Name Input Section */
+    .name-input {
+        padding: 1.5rem 1rem;
+    }
+
+    .name-input h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .name-form {
+        padding: 1rem;
+    }
+
+    /* Input Groups */
+    .input-group {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .input-group label {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+
+    input, select {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+
+    /* Profile Card */
+    .profile-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .bmi-result,
+    .fitness-level {
+        padding: 1.2rem;
+    }
+
+    /* Workout Plan */
+    .workout-plan {
+        padding: 1.2rem;
+    }
+
+    .workout-schedule {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .workout-day {
+        padding: 1.2rem;
+    }
+
+    /* Chatbot Mobile Optimization */
+    .chatbot {
+        width: 100%;
+        right: 0;
+        bottom: 0;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .chatbot-header {
+        padding: 1rem;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .chatbot-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .chatbot-container {
+        height: 60vh;
+        max-height: 500px;
+    }
+
+    .chat-messages {
+        padding: 1rem;
+    }
+
+    .message {
+        max-width: 85%;
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .chat-input {
+        padding: 0.8rem;
+    }
+
+    .chat-input input {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .chat-input button {
+        width: 38px;
+        height: 38px;
+    }
+
+    /* Form Elements */
+    .name-form {
+        padding: 1rem;
+    }
+
+    .name-input h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .name-input input {
+        font-size: 1.1rem;
+        padding: 1rem;
+    }
+
+    /* Button Adjustments */
+    .btn-primary {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 1rem;
+        font-size: 0.8rem;
+        margin-top: 1rem;
+        margin-bottom: 60px; /* Space for chatbot */
+    }
+
+    /* Message Formatting */
+    .message-content strong {
+        font-size: 1rem;
+        margin-top: 0.8rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .message-content .section {
+        padding: 0.8rem;
+        margin: 0.4rem 0;
+    }
+
+    /* Improved Touch Targets */
+    button,
+    select,
+    input[type="button"],
+    input[type="submit"] {
+        min-height: 44px;
+    }
+
+    /* Better Spacing for Lists */
+    .message-content ul {
+        margin-left: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .message-content li {
+        margin-bottom: 0.4rem;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .header-icons {
+        font-size: 1.3rem;
+        gap: 1.2rem;
+    }
+
+    .input-group {
+        padding: 0.8rem;
+    }
+
+    .name-input h2 {
+        font-size: 1.4rem;
+    }
+
+    .chatbot-container {
+        height: 50vh;
+    }
+
+    .message {
+        max-width: 90%;
+        font-size: 0.9rem;
+    }
+
+    .chat-input input {
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape Mode Optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+    .chatbot-container {
+        height: 80vh;
+    }
+
+    .header {
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 1.6rem;
+    }
+
+    .input-group {
+        padding: 0.8rem;
+    }
+
+    .profile-card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablet Optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .profile-card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .workout-schedule {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .chatbot {
+        width: 350px;
+    }
+}
+
+/* Better Form Elements on Mobile */
+@media (hover: none) and (pointer: coarse) {
+    input,
+    select,
+    button {
+        font-size: 16px !important; /* Prevent zoom on iOS */
+    }
+
+    .input-group {
+        margin-bottom: 1.2rem;
+    }
+
+    select {
+        background-position: right 0.8rem center;
+    }
+}
+
+/* Prevent Pull-to-Refresh on Mobile */
+body {
+    overscroll-behavior-y: contain;
+}
+
+/* Improve Scrolling Performance */
+.chat-messages,
+.container {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* Safe Area Insets for Modern Mobile Devices */
+@supports (padding: max(0px)) {
+    .container {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+
+    .chatbot {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* Fix for iOS Input Shadows */
+input,
+select {
+    -webkit-appearance: none;
+    appearance: none;
 } 
