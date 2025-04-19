@@ -7,9 +7,15 @@ class Chatbot {
         this.sendButton = document.querySelector('.chat-input button');
         this.chatbotHeader = document.querySelector('.chatbot-header');
         this.isOpen = false;
-        this.apiKey = 'AIzaSyD7Qb6lgYu4e8vf3IuhhQ2pEj5UxrSX4pk'; // Set API key directly
+        this.apiKey = 'AIzaSyD7Qb6lgYu4e8vf3IuhhQ2pEj5UxrSX4pk';
         this.conversationHistory = [];
-        this.systemPrompt = `You are a fitness assistant named Gen Fit. Your role is to help users with their fitness journey by providing:
+        this.userName = '';
+        this.nameEntryModal = document.getElementById('nameEntryModal');
+        this.userNameInput = document.getElementById('userNameInput');
+        this.submitNameButton = document.getElementById('submitName');
+        this.chatbot = document.getElementById('chatbot');
+
+        this.systemPrompt = `You are Gen Fit, a professional fitness coach. Your role is to help users with their fitness journey by providing:
 - Personalized workout advice
 - Nutrition tips
 - Exercise form guidance
@@ -25,6 +31,17 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
     }
 
     initialize() {
+        // Handle name entry
+        this.submitNameButton.addEventListener('click', () => {
+            const name = this.userNameInput.value.trim();
+            if (name) {
+                this.userName = name;
+                this.nameEntryModal.style.display = 'none';
+                this.chatbot.style.display = 'block';
+                this.addWelcomeMessage();
+            }
+        });
+
         // Toggle chatbot visibility
         this.chatbotHeader.addEventListener('click', () => {
             this.toggleChatbot();
@@ -47,6 +64,11 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
             role: 'system',
             parts: [{ text: this.systemPrompt }]
         });
+    }
+
+    addWelcomeMessage() {
+        const welcomeMessage = `Welcome ${this.userName}! I'm Gen Fit, your personal fitness coach. I'm here to help you achieve your fitness goals. What would you like to work on today?`;
+        this.addMessage(welcomeMessage, 'bot');
     }
 
     toggleChatbot() {
@@ -92,7 +114,7 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
                 body: JSON.stringify({
                     contents: [{
                         parts: [{
-                            text: `You are a professional fitness coach. Respond to the following message with a motivational, encouraging, and professional tone. Use fitness-specific terminology and provide actionable advice. Keep responses concise but informative. Here's the message: ${message}`
+                            text: `${this.systemPrompt}\n\nUser's name: ${this.userName}\n\nMessage: ${message}\n\nPlease respond as a professional fitness coach, using the user's name occasionally to make it more personal. Keep responses concise but informative, and always include actionable advice.`
                         }]
                     }]
                 })
@@ -108,32 +130,37 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
                 throw new Error('Invalid API response format');
             }
 
-            // Add fitness coach style to the response
             let responseText = data.candidates[0].content.parts[0].text;
             
-            // Add motivational phrases and fitness-specific language
-            const motivationalPhrases = [
-                "Let's crush those fitness goals!",
-                "You've got this!",
-                "Stay consistent and the results will follow!",
-                "Remember, progress takes time and dedication!",
-                "Keep pushing your limits!",
-                "Every workout counts!",
-                "Stay focused on your journey!",
-                "Your hard work will pay off!",
-                "Consistency is key to success!",
-                "Believe in yourself and your abilities!"
-            ];
-
-            // Add a random motivational phrase to the response
-            const randomPhrase = motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
-            responseText = `${responseText}\n\n${randomPhrase}`;
-
+            // Format the response with sections
+            responseText = this.formatResponse(responseText);
+            
             return responseText;
         } catch (error) {
             console.error('Error getting Gemini response:', error);
-            return "I'm having trouble connecting to the fitness coaching service right now. Please try again in a few moments. Remember, consistency is key to your fitness journey!";
+            return "I'm having trouble connecting right now. Please try again in a few moments. Remember, consistency is key to your fitness journey!";
         }
+    }
+
+    formatResponse(text) {
+        // Add motivational phrase
+        const motivationalPhrases = [
+            "Let's crush those fitness goals!",
+            "You've got this!",
+            "Stay consistent and the results will follow!",
+            "Remember, progress takes time and dedication!",
+            "Keep pushing your limits!",
+            "Every workout counts!",
+            "Stay focused on your journey!",
+            "Your hard work will pay off!",
+            "Consistency is key to success!",
+            "Believe in yourself and your abilities!"
+        ];
+
+        const randomPhrase = motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
+        
+        // Format the response with sections
+        return `${text}\n\n💪 ${randomPhrase}`;
     }
 
     addMessage(text, sender) {
@@ -146,10 +173,16 @@ Always be professional, encouraging, and safety-conscious. If you don't know som
         timestampSpan.classList.add('message-timestamp');
         timestampSpan.textContent = timestamp;
         
-        // Add message content
+        // Add message content with formatting
         const contentDiv = document.createElement('div');
         contentDiv.classList.add('message-content');
-        contentDiv.textContent = text;
+        
+        // Replace newlines with <br> and add emojis
+        const formattedText = text
+            .replace(/\n\n/g, '<br><br>')
+            .replace(/\n/g, '<br>');
+        
+        contentDiv.innerHTML = formattedText;
         
         messageDiv.appendChild(contentDiv);
         messageDiv.appendChild(timestampSpan);
